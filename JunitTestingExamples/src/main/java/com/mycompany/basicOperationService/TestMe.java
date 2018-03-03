@@ -12,7 +12,9 @@ public class TestMe {
 	int min = 1;
 	Random rand = new Random();
 	int randomValue = rand.nextInt((max - min) + 1) + min;
-
+	
+	/*This class will thrown an exception if run outside
+	of establish Junit test*/
 	public void run() throws Exception {
 
 		// Adds 2 to a random number
@@ -28,7 +30,7 @@ public class TestMe {
 		try {
 			divideByZero();
 		} catch (ArithmeticException e) {
-			throw(DivideByZeroArithmeticException);
+			throw (DivideByZeroArithmeticException);
 		}
 	}
 

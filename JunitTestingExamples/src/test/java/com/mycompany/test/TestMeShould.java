@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.mycompany.basicOperationService.TestMe;
@@ -17,12 +18,14 @@ public class TestMeShould {
 	private int max = 50;
 	private int min = 1;
 	int randomValue = rand.nextInt((max - min) + 1) + min;
+	int evaluteBeforeAddition = 3;
 
 	@Test
 	public void exist() {
 		assertNotNull(testMe);
 	}
 
+	
 	@Test
 	public void reverseString() {
 		String original = "original"; // Arrange
@@ -30,10 +33,17 @@ public class TestMeShould {
 		assertEquals("lanigiro", reversed); // Assert
 
 	}
-
+	/*If not run before addToRandom,
+	both will fail.*/
+	@Before
+    public void runBeforeAddToRandom() {
+		evaluteBeforeAddition--;
+		assertTrue(evaluteBeforeAddition == 2);
+    }
+	
 	@Test
 	public void addToRandom() {
-		assertEquals(randomValue + 2, testMe.addTwo(randomValue));
+		assertEquals(randomValue + evaluteBeforeAddition, testMe.addTwo(randomValue));
 	}
 
 	@Test
@@ -61,5 +71,4 @@ public class TestMeShould {
 		}
 
 	}
-
 }
