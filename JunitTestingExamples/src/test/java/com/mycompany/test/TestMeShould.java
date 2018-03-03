@@ -2,6 +2,7 @@ package com.mycompany.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 
@@ -22,16 +23,23 @@ public class TestMeShould {
 	}
 
 	@Test
+	public void reverseString() {
+		String original = "original"; // Arrange
+		String reversed = testMe.reverseString(original); // Act
+		assertEquals("lanigiro", reversed); // Assert
+
+	}
+
+	@Test
 	public void addToRandom() {
 		assertEquals(randomValue + 2, testMe.addTwo(randomValue));
 	}
 
 	@Test
-	public void reverseString() {
-		String original = "original"; 						// Arrange
-		String reversed = testMe.reverseString(original);	// Act
-		assertEquals("lanigiro", reversed);					// Assert
-
+	public void generateRandomString() {
+		String firstRandom = testMe.generateRandomString();
+		String secondRandom = testMe.generateRandomString();
+		
+		assertTrue(!firstRandom.equals(secondRandom));
 	}
-
 }

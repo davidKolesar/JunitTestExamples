@@ -38,7 +38,7 @@ public class TestMe {
 
 	}
 
-	private String generateRandomString() {
+	public String generateRandomString() {
 		// changes a random UUID into a String
 		String randomUuid = UUID.randomUUID().toString();
 
