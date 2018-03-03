@@ -54,15 +54,7 @@ public class TestMe {
 	}
 
 	public String reverseString(String original) {
-		String reversedOriginal = "";
-
-		for (int i = 0; i < original.length(); i++) {
-			char[] originalLetters = new char[original.length()];
-			originalLetters[original.length() - i - 1] = original.charAt(i);
-			String reversingOriginal = new String(originalLetters);
-			reversedOriginal = reversingOriginal;
-		}
-		return reversedOriginal;
+		return new StringBuilder(original).reverse().toString();
 	}
 
 }

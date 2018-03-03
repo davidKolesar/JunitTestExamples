@@ -24,6 +24,13 @@ public class TestMeShould {
 	@Test
 	public void addToRandom() {
 		assertEquals(randomValue + 2, testMe.addTwo(randomValue));
+	}
+
+	@Test
+	public void reverseString() {
+		String original = "original"; 						// Arrange
+		String reversed = testMe.reverseString(original);	// Act
+		assertEquals("lanigiro", reversed);					// Assert
 
 	}
 
