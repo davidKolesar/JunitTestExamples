@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Random;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.mycompany.basicOperationService.TestMe;
@@ -38,7 +39,6 @@ public class TestMeShould {
 	@Before
     public void runBeforeAddToRandom() {
 		evaluteBeforeAddition--;
-		assertTrue(evaluteBeforeAddition == 2);
     }
 	
 	@Test
@@ -56,7 +56,7 @@ public class TestMeShould {
 
 	@Test(expected = DivideByZeroArithmeticException.class)
 	public void throwUniqueException() throws Exception {
-		testMe.run();
+		testMe.divideByZero();
 	}
 
 	@Test
@@ -65,10 +65,19 @@ public class TestMeShould {
 		String specificError = "You cannot divide by zero";
 	
 		try {
-			testMe.run();
+			testMe.divideByZero();
 		} catch (DivideByZeroArithmeticException e) {
 			assertTrue(e.getError().equals(specificError));
 		}
 
 	}
+	
+	/* Run once before class starts 
+	(Database connection, connection pool, etc).*/
+	@BeforeClass
+    public static void runOnceBeforeClass() {
+        TestMe testMe = new TestMe();
+    }
+
+	
 }
