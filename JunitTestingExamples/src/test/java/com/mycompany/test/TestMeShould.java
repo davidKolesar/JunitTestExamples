@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -45,7 +47,14 @@ public class TestMeShould {
 	public void addToRandom() {
 		assertEquals(randomValue + evaluteBeforeAddition, testMe.addTwo(randomValue));
 	}
-
+	
+	/*runs after addToRandom,
+	so addToRandom will not fail*/
+	@After 
+	public void illustrateAfterWorks() {
+		evaluteBeforeAddition = 6;
+	}
+	
 	@Test
 	public void generateRandomString() {
 		String firstRandom = testMe.generateRandomString();
@@ -77,7 +86,15 @@ public class TestMeShould {
 	@BeforeClass
     public static void runOnceBeforeClass() {
         TestMe testMe = new TestMe();
+		testMe.emulateDatabaseConnection();
+	    System.out.println("Connection Opened");
     }
 
-	
+	/* Run after test finishes in 
+	order to emulate closing connection.*/
+	@AfterClass
+    public static void runOnceAfterClass() {
+        System.out.println("Connection Closed");
+    }
+
 }
