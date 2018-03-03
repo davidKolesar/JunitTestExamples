@@ -13,7 +13,9 @@ public class TestMe {
 	public void run() throws DivideByZeroArithmeticException {
 		
 		// Adds 2 to a random number
-		addToRandom();
+		Random rand = new Random();
+		int randomValue = rand.nextInt((max - min) + 1) + min;
+		addTwo(randomValue);
 
 		// generatesRandomString
 		String randomData = generateRandomString();
@@ -46,10 +48,8 @@ public class TestMe {
 
 	}
 
-	public int addToRandom() {
-		Random rand = new Random();
-		int randomValue = rand.nextInt((max - min) + 1) + min;
-		return randomValue + 2;
+	public int addTwo(int randomNumber) {
+		return randomNumber+ 2;
 	}
 
 	public String reverseString(String original) {
