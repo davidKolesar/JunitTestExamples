@@ -13,7 +13,7 @@ public class TestMe {
 	Random rand = new Random();
 	int randomValue = rand.nextInt((max - min) + 1) + min;
 
-	public void run() throws DivideByZeroArithmeticException {
+	public void run() throws Exception {
 
 		// Adds 2 to a random number
 		addTwo(randomValue);
@@ -28,9 +28,8 @@ public class TestMe {
 		try {
 			divideByZero();
 		} catch (ArithmeticException e) {
-			// TODO HANDLE THIS EXCEPTION SO IT DOES SOMETHING UNIQUE
+			throw(DivideByZeroArithmeticException);
 		}
-
 	}
 
 	private int divideByZero() {

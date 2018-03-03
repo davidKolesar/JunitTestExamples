@@ -9,6 +9,7 @@ import java.util.Random;
 import org.junit.Test;
 
 import com.mycompany.basicOperationService.TestMe;
+import com.mycompany.uniqueException.DivideByZeroArithmeticException;
 
 public class TestMeShould {
 	Random rand = new Random();
@@ -39,7 +40,26 @@ public class TestMeShould {
 	public void generateRandomString() {
 		String firstRandom = testMe.generateRandomString();
 		String secondRandom = testMe.generateRandomString();
-		
+
 		assertTrue(!firstRandom.equals(secondRandom));
 	}
+
+	@Test(expected = DivideByZeroArithmeticException.class)
+	public void throwUniqueException() throws Exception {
+		testMe.run();
+	}
+
+	@Test
+	public void throwSpecificErrorLog() throws Exception {
+
+		String specificError = "You cannot divide by zero";
+	
+		try {
+			testMe.run();
+		} catch (DivideByZeroArithmeticException e) {
+			assertTrue(e.getError().equals(specificError));
+		}
+
+	}
+
 }
